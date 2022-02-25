@@ -5,14 +5,14 @@ import { api } from "../../../services/api";
 import handler from "../../../services/handleApiRequest";
 
 
-interface Props {
+export interface IUser {
   avatar_url: string;
   login: string;
 }
 
 
 export const useUsers = () => {
-  const [users, setUsers] = useState([] as Props[]);
+  const [users, setUsers] = useState([] as IUser[]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,5 +29,5 @@ export const useUsers = () => {
 
 
 export const useUsersQuery = () => {
-  return useQuery<AxiosResponse<Props[]>>('users', () => api.get('users'));
+  return useQuery<AxiosResponse<IUser[]>>('users', () => api.get('users'));
 }
